@@ -1,0 +1,1661 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网红黑料在线 - 视频内容观察平台 | 官方纪录与深度解析</title>
+<meta name="description" content="网红黑料在线官方网站，聚焦网络红人内容生态的深度观察、事件纪录与理性讨论，为社区创作者与用户提供真实、多元、可信赖的视频内容与行业解读。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23161a22'/%3E%3Cpath d='M20 18h18a12 12 0 010 24H20z' fill='%23e8432f'/%3E%3Ccircle cx='26' cy='32' r='4' fill='%23f4f2ec'/%3E%3C/svg%3E">
+<style>
+:root{
+--ink:#161a22;
+--ink2:#222731;
+--paper:#f4f2ec;
+--paper2:#e9e5db;
+--red:#e8432f;
+--red-deep:#c22f1e;
+--line:#d8d2c6;
+--muted:#6e6a60;
+--white:#ffffff;
+--shadow:0 18px 40px rgba(22,26,34,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+font-family:"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+background:var(--paper);
+color:var(--ink);
+line-height:1.75;
+-webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input{font-family:inherit}
+
+/* ============ 吸顶公告 + 页头 ============ */
+.hky-sticky{
+position:sticky;top:0;z-index:120;
+box-shadow:0 2px 0 rgba(22,26,34,.06);
+}
+.hky-announce{
+background:var(--ink);
+color:#f0ede5;
+font-size:13px;
+letter-spacing:.02em;
+padding:9px 0;
+border-bottom:1px solid rgba(255,255,255,.12);
+}
+.hky-wrap{width:min(1200px,92%);margin:0 auto}
+.hky-announce-inner{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hky-announce-tag{
+background:var(--red);color:#fff;font-size:11px;font-weight:700;
+padding:2px 9px;border-radius:2px;letter-spacing:.12em;white-space:nowrap;
+}
+.hky-announce-list{display:flex;gap:26px;flex-wrap:wrap;font-size:13px}
+.hky-announce-list a:hover{color:var(--red)}
+.hky-announce-list span{color:#9aa0a8}
+.hky-head{
+background:rgba(244,242,236,.96);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--line);
+}
+.hky-head-inner{display:flex;align-items:center;gap:24px;padding:14px 0}
+.hky-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.hky-logo-mark{
+width:40px;height:40px;border-radius:9px;background:var(--ink);
+display:flex;align-items:center;justify-content:center;
+}
+.hky-logo-mark svg{width:24px;height:24px}
+.hky-logo-txt strong{display:block;font-size:17px;letter-spacing:.04em;line-height:1.2}
+.hky-logo-txt small{display:block;font-size:10px;letter-spacing:.24em;color:var(--muted);text-transform:uppercase}
+.hky-nav{display:flex;gap:22px;margin-left:auto;font-size:14px}
+.hky-nav a{position:relative;padding:4px 0;color:#3a3f48;white-space:nowrap}
+.hky-nav a::after{
+content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--red);transition:width .25s;
+}
+.hky-nav a:hover::after{width:100%}
+.hky-head-tools{display:flex;align-items:center;gap:12px}
+.hky-search{position:relative;display:flex;align-items:center}
+.hky-search input{
+width:190px;border:1px solid var(--line);background:#fff;border-radius:40px;
+padding:8px 14px 8px 34px;font-size:13px;color:var(--ink);outline:none;transition:.2s;
+}
+.hky-search input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(232,67,47,.12)}
+.hky-search .hky-sicon{position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:.5;width:15px;height:15px}
+.hky-search-feedback{
+position:absolute;top:calc(100% + 8px);left:0;right:0;
+background:var(--ink);color:#f0ede5;font-size:12px;border-radius:8px;
+padding:8px 12px;opacity:0;transform:translateY(-6px);pointer-events:none;transition:.22s;z-index:20;
+}
+.hky-search-feedback.on{opacity:1;transform:translateY(0)}
+.hky-burger{
+display:none;width:40px;height:40px;border:1px solid var(--line);border-radius:8px;
+align-items:center;justify-content:center;flex-direction:column;gap:4px;
+}
+.hky-burger span{display:block;width:18px;height:2px;background:var(--ink);transition:.2s}
+.hky-burger.on span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.hky-burger.on span:nth-child(2){opacity:0}
+.hky-burger.on span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.hky-mnav{display:none;border-top:1px solid var(--line);background:var(--paper2);padding:8px 0 14px}
+.hky-mnav.open{display:block}
+.hky-mnav a{display:block;padding:10px 4px;font-size:14px;border-bottom:1px dashed var(--line)}
+
+/* ============ 首屏 ============ */
+.hky-hero{padding:52px 0 64px}
+.hky-hero-grid{
+display:grid;grid-template-columns:minmax(0,5fr) minmax(0,5fr);
+gap:48px;align-items:center;
+}
+.hky-kicker{
+display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;
+letter-spacing:.18em;color:var(--red);text-transform:uppercase;margin-bottom:18px;
+}
+.hky-kicker::before{content:"";width:26px;height:2px;background:var(--red)}
+.hky-h1{
+font-size:clamp(38px,5.4vw,64px);line-height:1.08;letter-spacing:-.02em;font-weight:800;
+}
+.hky-h1 em{font-style:normal;color:var(--red);display:block}
+.hky-hero-lead{font-size:16px;color:#3a3f48;margin-top:22px;max-width:34em}
+.hky-hero-desc{font-size:14px;color:var(--muted);margin-top:14px;max-width:36em}
+.hky-hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hky-btn{
+display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:6px;
+font-size:14px;font-weight:700;transition:.2s;border:1px solid transparent;
+}
+.hky-btn-primary{background:var(--red);color:#fff}
+.hky-btn-primary:hover{background:var(--red-deep);transform:translateY(-2px)}
+.hky-btn-ghost{border-color:var(--ink);color:var(--ink)}
+.hky-btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.hky-stats{
+display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:34px;
+border-top:1px solid var(--line);padding-top:22px;
+}
+.hky-stat strong{display:block;font-size:26px;font-weight:800;letter-spacing:-.01em}
+.hky-stat strong i{font-style:normal;color:var(--red);font-size:15px;margin-left:2px}
+.hky-stat span{font-size:12px;color:var(--muted)}
+.hky-hero-visual{position:relative}
+.hky-hero-frame{
+border-radius:14px;overflow:hidden;background:var(--ink);
+box-shadow:var(--shadow);position:relative;
+}
+.hky-hero-frame svg{width:100%;height:auto}
+.hky-hero-badge{
+position:absolute;left:16px;top:16px;background:rgba(22,26,34,.82);color:#f0ede5;
+font-size:11px;letter-spacing:.12em;padding:5px 11px;border-radius:4px;display:flex;align-items:center;gap:6px;
+}
+.hky-hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:hky-pulse 1.6s infinite}
+@keyframes hky-pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.hky-hero-meta{
+position:absolute;left:16px;right:16px;bottom:16px;display:flex;justify-content:space-between;
+align-items:flex-end;gap:12px;color:#fff;font-size:12px;
+}
+.hky-hero-meta b{display:block;font-size:14px;margin-bottom:2px}
+.hky-hero-meta .hky-play{
+width:46px;height:46px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;
+flex-shrink:0;box-shadow:0 8px 22px rgba(232,67,47,.5);transition:.2s;
+}
+.hky-hero-meta .hky-play:hover{transform:scale(1.08)}
+.hky-hero-caption{
+font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6;
+border-left:2px solid var(--red);padding-left:12px;
+}
+
+/* ============ 通用 section ============ */
+.hky-sec{padding:64px 0}
+.hky-sec.alt{background:var(--paper2)}
+.hky-sec.dark{background:var(--ink);color:#eae7df}
+.hky-sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:34px;flex-wrap:wrap}
+.hky-sec-head h2{font-size:clamp(24px,3vw,34px);letter-spacing:-.01em;line-height:1.2}
+.hky-sec-head .hky-eyebrow{
+font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:700;display:block;margin-bottom:8px;
+}
+.hky-sec.dark .hky-sec-head h2{color:#fff}
+.hky-sec-head p{font-size:14px;color:var(--muted);max-width:42em;margin-top:6px}
+.hky-sec.dark .hky-sec-head p{color:#9aa0a8}
+.hky-more{
+font-size:13px;font-weight:700;color:var(--red);display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+}
+.hky-more:hover{gap:10px;transition:.2s}
+
+/* ============ 重点大图 + 文字列表 ============ */
+.hky-focus-grid{display:grid;grid-template-columns:minmax(0,6.2fr) minmax(0,3.8fr);gap:40px;align-items:start}
+.hky-focus-main{border-radius:14px;overflow:hidden;background:var(--ink);box-shadow:var(--shadow)}
+.hky-focus-main svg{width:100%;height:auto}
+.hky-focus-body{padding:22px 24px 26px;background:#fff;border-radius:14px;margin-top:-1px}
+.hky-tag{
+display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 10px;border-radius:3px;
+background:rgba(232,67,47,.1);color:var(--red);margin-right:6px;
+}
+.hky-focus-body h3{font-size:22px;margin:12px 0 8px;line-height:1.35}
+.hky-focus-body p{font-size:14px;color:#4a4f58}
+.hky-focus-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px;flex-wrap:wrap}
+.hky-authorline{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.hky-ava{
+width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+font-size:12px;font-weight:800;color:#fff;flex-shrink:0;
+}
+.hky-actions{display:flex;gap:8px;flex-wrap:wrap}
+.hky-act{
+font-size:12px;border:1px solid var(--line);border-radius:20px;padding:5px 12px;
+display:inline-flex;align-items:center;gap:6px;transition:.2s;background:#fff;
+}
+.hky-act:hover{border-color:var(--red);color:var(--red)}
+.hky-act.liked{background:rgba(232,67,47,.1);border-color:var(--red);color:var(--red)}
+.hky-act.saved{background:var(--ink);border-color:var(--ink);color:#fff}
+.hky-focus-list{display:flex;flex-direction:column}
+.hky-flist-item{
+padding:18px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:34px minmax(0,1fr);
+gap:14px;align-items:start;
+}
+.hky-flist-item:first-child{padding-top:0}
+.hky-flist-num{
+font-size:20px;font-weight:800;color:#c9c3b6;line-height:1;padding-top:4px;
+}
+.hky-flist-item h4{font-size:15px;line-height:1.45;margin-bottom:5px}
+.hky-flist-item h4:hover{color:var(--red);cursor:pointer}
+.hky-flist-item p{font-size:12.5px;color:var(--muted);line-height:1.65}
+.hky-flist-meta{font-size:11px;color:#8a8578;margin-top:6px;letter-spacing:.02em}
+.hky-flist-meta em{font-style:normal;color:var(--red);font-weight:700}
+
+/* ============ 视频卡片 三列 ============ */
+.hky-vgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.hky-vcard{
+background:#fff;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;
+transition:transform .25s,box-shadow .25s;border:1px solid rgba(216,210,198,.6);
+}
+.hky-vcard:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.hky-vthumb{position:relative;background:var(--ink2)}
+.hky-vthumb svg{width:100%;height:auto}
+.hky-vthumb .hky-dur{
+position:absolute;right:9px;bottom:9px;background:rgba(22,26,34,.85);color:#fff;
+font-size:11px;padding:2px 7px;border-radius:3px;letter-spacing:.04em;
+}
+.hky-vbody{padding:16px 17px 18px;display:flex;flex-direction:column;flex:1}
+.hky-vbody h3{font-size:15.5px;line-height:1.42;margin:8px 0 7px}
+.hky-vbody p{font-size:12.5px;color:var(--muted);line-height:1.65;flex:1}
+.hky-vmeta{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;font-size:11.5px;color:#8a8578}
+.hky-vmeta .hky-authorline{font-size:11.5px}
+.hky-vact{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.hky-vact .hky-act{font-size:11.5px;padding:4px 10px}
+
+/* ============ 专题 ============ */
+.hky-special-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.hky-special{
+background:#fff;border-radius:12px;border:1px solid rgba(216,210,198,.7);
+padding:22px 24px 20px;display:flex;flex-direction:column;transition:.22s;
+}
+.hky-special:hover{border-color:var(--red)}
+.hky-special.hky-wide{grid-column:span 1}
+.hky-special-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.hky-special h3{font-size:18px;line-height:1.35}
+.hky-status{
+font-size:11px;padding:3px 9px;border-radius:20px;white-space:nowrap;font-weight:700;
+background:rgba(232,67,47,.1);color:var(--red);
+}
+.hky-status.done{background:rgba(58,79,23,.12);color:#4a5c22}
+.hky-status.wait{background:rgba(22,26,34,.08);color:#5c6169}
+.hky-special>p{font-size:13px;color:var(--muted);margin:8px 0 14px}
+.hky-special-list{border-top:1px dashed var(--line);padding-top:10px;margin-top:auto}
+.hky-special-list li{
+font-size:13px;padding:8px 0;display:flex;justify-content:space-between;gap:12px;
+border-bottom:1px solid rgba(216,210,198,.5);
+}
+.hky-special-list li:last-child{border-bottom:none;padding-bottom:0}
+.hky-special-list small{color:#948f82;font-size:11px;white-space:nowrap}
+
+/* ============ 作者矩阵 双列简介 ============ */
+.hky-creator-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.hky-creator{
+background:#fff;border-radius:12px;padding:22px 24px;border:1px solid rgba(216,210,198,.7);
+display:flex;gap:16px;transition:.22s;
+}
+.hky-creator:hover{border-color:var(--ink);transform:translateY(-3px)}
+.hky-cava{
+width:54px;height:54px;border-radius:12px;flex-shrink:0;
+display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:800;
+}
+.hky-cbody h3{font-size:15.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hky-cbody h3 small{font-size:11px;color:var(--red);font-weight:700;background:rgba(232,67,47,.1);padding:1px 7px;border-radius:3px}
+.hky-cfield{font-size:12px;color:var(--red);font-weight:700;margin:3px 0 7px}
+.hky-cbody p{font-size:12.5px;color:var(--muted);line-height:1.68}
+.hky-cstat{display:flex;gap:16px;margin-top:10px;font-size:11.5px;color:#8a8578}
+.hky-cstat b{color:var(--ink);font-size:13px}
+.hky-cstat button{font-size:11.5px;color:var(--red);font-weight:700;border:1px solid var(--red);padding:2px 10px;border-radius:20px;transition:.2s}
+.hky-cstat button:hover{background:var(--red);color:#fff}
+
+/* ============ 评价 双列短评 ============ */
+.hky-cmt-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.hky-cmt{
+background:#fff;border-radius:10px;padding:18px 20px;border-left:3px solid var(--red);
+border-top:1px solid rgba(216,210,198,.6);border-right:1px solid rgba(216,210,198,.6);border-bottom:1px solid rgba(216,210,198,.6);
+display:flex;flex-direction:column;gap:9px;
+}
+.hky-cmt-top{display:flex;align-items:center;gap:10px}
+.hky-cmt-top b{font-size:13.5px}
+.hky-cmt-top small{font-size:11px;color:#948f82;margin-left:auto}
+.hky-cmt p{font-size:13px;color:#41464f;line-height:1.7}
+.hky-stars{color:var(--red);font-size:12px;letter-spacing:2px}
+.hky-quote{
+grid-column:span 2;background:var(--ink);color:#eae7df;border-radius:12px;padding:24px 28px;
+border-left:5px solid var(--red);
+}
+.hky-quote blockquote{font-size:17px;line-height:1.7;font-weight:600}
+.hky-quote footer{font-size:12px;color:#9aa0a8;margin-top:12px;letter-spacing:.04em}
+
+/* ============ 图文索引 ============ */
+.hky-index-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.hky-index-card{
+background:#fff;border-radius:12px;overflow:hidden;border:1px solid rgba(216,210,198,.6);
+display:flex;flex-direction:column;
+}
+.hky-index-card .hky-vthumb svg{height:auto}
+.hky-index-body{padding:16px 18px 18px}
+.hky-index-body h3{font-size:15px;line-height:1.45;margin:8px 0 6px}
+.hky-index-body p{font-size:12.5px;color:var(--muted)}
+.hky-index-body ul{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.hky-index-body li{font-size:12px;color:#5c6169;padding:4px 0;display:flex;gap:8px}
+.hky-index-body li::before{content:"·";color:var(--red);font-weight:800}
+
+/* ============ 深度解析 ============ */
+.hky-deep{max-width:900px}
+.hky-deep p{font-size:14.5px;color:#3a3f48;margin-bottom:16px}
+.hky-deep h3{font-size:19px;margin:32px 0 12px;padding-left:14px;border-left:4px solid var(--red);line-height:1.4}
+.hky-deep p strong{color:var(--ink);font-weight:700}
+.hky-insight{
+display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:28px 0;
+}
+.hky-insight div{
+background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 18px 16px;
+}
+.hky-insight b{display:block;font-size:22px;color:var(--red);letter-spacing:-.01em}
+.hky-insight span{font-size:12px;color:var(--muted);line-height:1.6;display:block;margin-top:4px}
+
+/* ============ FAQ ============ */
+.hky-faq{max-width:900px}
+.hky-faq details{
+background:#fff;border:1px solid rgba(216,210,198,.7);border-radius:10px;
+padding:0 20px;margin-bottom:12px;transition:.2s;
+}
+.hky-faq details[open]{border-color:var(--red)}
+.hky-faq summary{
+padding:16px 0;font-size:14.5px;font-weight:700;cursor:pointer;list-style:none;
+display:flex;justify-content:space-between;align-items:center;gap:14px;
+}
+.hky-faq summary::-webkit-details-marker{display:none}
+.hky-faq summary::after{content:"+";font-size:20px;color:var(--red);font-weight:400;line-height:1;transition:.2s}
+.hky-faq details[open] summary::after{transform:rotate(45deg)}
+.hky-faq .hky-faq-a{padding:0 0 18px;font-size:13px;color:#4a4f58;line-height:1.75}
+
+/* ============ 企业动态 / 合作 ============ */
+.hky-news-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:36px}
+.hky-news-list li{
+padding:16px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:88px minmax(0,1fr);
+gap:16px;align-items:baseline;
+}
+.hky-news-list li:first-child{padding-top:0}
+.hky-news-list time{font-size:11.5px;color:var(--red);font-weight:700;letter-spacing:.03em}
+.hky-news-list h3{font-size:14.5px;margin-bottom:3px;line-height:1.5}
+.hky-news-list p{font-size:12.5px;color:var(--muted)}
+.hky-partners{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.hky-partner{
+background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;text-align:center;
+transition:.2s;
+}
+.hky-partner:hover{border-color:var(--ink);transform:translateY(-2px)}
+.hky-partner b{display:block;font-size:14px;letter-spacing:.04em}
+.hky-partner span{font-size:11px;color:var(--muted);letter-spacing:.1em}
+
+/* ============ 投稿 CTA ============ */
+.hky-cta{
+background:linear-gradient(120deg,var(--ink) 0%,var(--ink2) 70%,#2e333d 100%);
+color:#eae7df;border-radius:16px;padding:42px 44px;
+display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;
+}
+.hky-cta h2{font-size:clamp(22px,2.8vw,30px);color:#fff;line-height:1.3}
+.hky-cta p{font-size:14px;color:#9aa0a8;margin-top:8px;max-width:38em}
+.hky-cta .hky-btn-primary{background:var(--red)}
+.hky-cta .hky-btn-primary:hover{background:#f7573f}
+
+/* ============ 页脚 ============ */
+.hky-foot{background:var(--ink);color:#c8c4ba;padding:56px 0 0}
+.hky-foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;padding-bottom:40px}
+.hky-foot h4{color:#fff;font-size:14px;margin-bottom:14px;letter-spacing:.04em}
+.hky-foot p{font-size:12.5px;line-height:1.8;color:#9aa0a8}
+.hky-foot li{font-size:12.5px;padding:5px 0;color:#9aa0a8}
+.hky-foot li:hover{color:#fff;cursor:pointer}
+.hky-foot-bottom{
+border-top:1px solid rgba(255,255,255,.1);padding:18px 0 26px;display:flex;justify-content:space-between;
+gap:16px;flex-wrap:wrap;font-size:11.5px;color:#7d838c;
+}
+.hky-foot-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.hky-foot-logo .hky-logo-mark{width:36px;height:36px}
+.hky-foot-logo strong{color:#fff;font-size:16px;letter-spacing:.04em}
+
+/* ============ 通用交互组件 ============ */
+.hky-up{
+position:fixed;right:26px;bottom:26px;width:46px;height:46px;border-radius:50%;
+background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;
+box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s;z-index:150;font-size:18px;
+}
+.hky-up.on{opacity:1;pointer-events:auto}
+.hky-up:hover{background:var(--red)}
+.hky-modal{
+position:fixed;inset:0;background:rgba(22,26,34,.6);z-index:200;display:none;
+align-items:center;justify-content:center;padding:20px;
+}
+.hky-modal.on{display:flex}
+.hky-modal-box{
+background:var(--paper);border-radius:14px;max-width:520px;width:100%;padding:28px 30px;
+box-shadow:0 30px 80px rgba(0,0,0,.4);position:relative;max-height:86vh;overflow:auto;
+}
+.hky-modal-box h3{font-size:19px;margin-bottom:10px}
+.hky-modal-box p{font-size:13.5px;color:#4a4f58;line-height:1.75}
+.hky-modal-close{
+position:absolute;right:16px;top:14px;font-size:20px;color:var(--muted);width:30px;height:30px;
+display:flex;align-items:center;justify-content:center;border-radius:50%;
+}
+.hky-modal-close:hover{background:rgba(22,26,34,.08)}
+.hky-toast{
+position:fixed;left:50%;bottom:40px;transform:translate(-50%,20px);background:var(--ink);color:#fff;
+font-size:13px;padding:11px 22px;border-radius:8px;opacity:0;pointer-events:none;transition:.25s;z-index:220;
+box-shadow:var(--shadow);
+}
+.hky-toast.on{opacity:1;transform:translate(-50%,0)}
+.hky-form-row{margin-bottom:14px}
+.hky-form-row label{font-size:12px;font-weight:700;display:block;margin-bottom:5px;color:var(--ink)}
+.hky-form-row input,.hky-form-row textarea{
+width:100%;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:13px;background:#fff;
+outline:none;resize:vertical;
+}
+.hky-form-row input:focus,.hky-form-row textarea:focus{border-color:var(--red)}
+.hky-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.hky-tagbtn{
+font-size:12.5px;border:1px solid var(--line);border-radius:20px;padding:6px 16px;transition:.2s;background:#fff;
+}
+.hky-tagbtn.on,.hky-tagbtn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* ============ 响应式 ============ */
+@media(max-width:1024px){
+.hky-hero-grid{grid-template-columns:1fr;gap:36px}
+.hky-focus-grid{grid-template-columns:1fr;gap:26px}
+.hky-vgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.hky-index-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.hky-news-grid{grid-template-columns:1fr}
+.hky-foot-grid{grid-template-columns:1.4fr 1fr 1fr}
+.hky-nav{display:none}
+.hky-burger{display:flex}
+.hky-insight{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+.hky-wrap{width:92%}
+.hky-search input{width:140px}
+.hky-hero{padding:34px 0 44px}
+.hky-sec{padding:44px 0}
+.hky-vgrid,.hky-index-grid,.hky-special-grid,.hky-creator-grid,.hky-cmt-grid{grid-template-columns:1fr}
+.hky-quote{grid-column:span 1}
+.hky-stats{gap:10px}
+.hky-stat strong{font-size:21px}
+.hky-foot-grid{grid-template-columns:1fr 1fr}
+.hky-cta{padding:30px 24px}
+.hky-insight{grid-template-columns:1fr}
+.hky-news-list li{grid-template-columns:1fr;gap:2px}
+.hky-announce-list{font-size:12px;gap:16px}
+.hky-hero-meta{flex-direction:column;align-items:flex-start}
+.hky-sec-head{margin-bottom:24px}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- ===== 顶部吸顶：公告条 + 页头 ===== -->
+<div class="hky-sticky">
+  <div class="hky-announce">
+    <div class="hky-wrap hky-announce-inner">
+      <span class="hky-announce-tag">官方发布</span>
+      <div class="hky-announce-list">
+        <a href="#hky-videos">新增《年度红人争议事件复盘》4K 高清合集上线 <span>· 11-22</span></a>
+        <a href="#hky-deep">《内容生态观察白皮书》2026 版开放下载 <span>· 11-20</span></a>
+        <a href="#hky-news">创作者申诉通道升级，处理时效缩短至 48 小时 <span>· 11-18</span></a>
+      </div>
+    </div>
+  </div>
+  <header class="hky-head">
+    <div class="hky-wrap hky-head-inner">
+      <a class="hky-logo" href="#top">
+        <span class="hky-logo-mark">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#161a22"/><path d="M20 18h17a12 12 0 010 24H20z" fill="#e8432f"/><circle cx="26" cy="32" r="4" fill="#f4f2ec"/></svg>
+        </span>
+        <span class="hky-logo-txt">
+          <strong>网红黑料在线</strong>
+          <small>Video Insight</small>
+        </span>
+      </a>
+      <nav class="hky-nav" aria-label="主导航">
+        <a href="#hky-focus">焦点观察</a>
+        <a href="#hky-videos">视频内容</a>
+        <a href="#hky-special">专题企划</a>
+        <a href="#hky-creators">创作者</a>
+        <a href="#hky-reviews">社区口碑</a>
+        <a href="#hky-deep">深度解析</a>
+        <a href="#hky-faq">帮助中心</a>
+      </nav>
+      <div class="hky-head-tools">
+        <div class="hky-search">
+          <svg class="hky-sicon" viewBox="0 0 24 24" fill="none" stroke="#161a22" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="search" id="hkySearchInput" placeholder="搜索事件 / 创作者 / 专题" aria-label="站内搜索">
+          <div class="hky-search-feedback" id="hkySearchFeedback"></div>
+        </div>
+        <button class="hky-burger" id="hkyBurger" aria-label="展开导航" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="hky-mnav" id="hkyMnav">
+      <div class="hky-wrap">
+        <a href="#hky-focus">焦点观察</a>
+        <a href="#hky-videos">视频内容</a>
+        <a href="#hky-special">专题企划</a>
+        <a href="#hky-creators">创作者</a>
+        <a href="#hky-reviews">社区口碑</a>
+        <a href="#hky-deep">深度解析</a>
+        <a href="#hky-faq">帮助中心</a>
+        <a href="#hky-cta">投稿入口</a>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main id="top">
+
+<!-- ===== 首屏 ===== -->
+<section class="hky-hero">
+  <div class="hky-wrap hky-hero-grid">
+    <div>
+      <span class="hky-kicker">官方网站 · 视频内容观察平台</span>
+      <h1 class="hky-h1">网红黑料在线<em>让真相被看见</em></h1>
+      <p class="hky-hero-lead">一个专注网络红人内容生态的原创视频社区。我们以企业级内容标准，记录争议事件的完整脉络，还原创作背后的真实细节，为品牌方、创作者与普通用户搭建可信赖的信息桥梁。</p>
+      <p class="hky-hero-desc">作为深耕内容观察垂直领域的官方网站，平台坚持正版采集、高清呈现与多方信源交叉核验，让每一条视频都有出处、每一次讨论有边界、每一份口碑经得起检索。</p>
+      <div class="hky-hero-btns">
+        <a class="hky-btn hky-btn-primary" href="#hky-videos">观看本期内容 →</a>
+        <a class="hky-btn hky-btn-ghost" href="#hky-cta">提交线索 / 投稿</a>
+      </div>
+      <div class="hky-stats">
+        <div class="hky-stat"><strong>1,240<i>+</i></strong><span>已归档事件纪录片</span></div>
+        <div class="hky-stat"><strong>86<i>万</i></strong><span>社区注册创作者</span></div>
+        <div class="hky-stat"><strong>9.4<i>/10</i></strong><span>用户内容可信度评分</span></div>
+      </div>
+    </div>
+    <div class="hky-hero-visual">
+      <div class="hky-hero-frame">
+        <svg viewBox="0 0 640 420" role="img" aria-label="网红黑料在线首屏主视觉：暗色演播室内多屏信息墙与人物剪影">
+          <defs>
+            <linearGradient id="hkyHeroBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#1b2029"/><stop offset="1" stop-color="#2b323d"/>
+            </linearGradient>
+            <linearGradient id="hkyHeroRed" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#e8432f"/><stop offset="1" stop-color="#ff7a5c"/>
+            </linearGradient>
+          </defs>
+          <rect width="640" height="420" fill="url(#hkyHeroBg)"/>
+          <g opacity=".18" stroke="#8a95a5" stroke-width="1">
+            <path d="M0 90h640M0 180h640M0 270h640M0 360h640"/>
+            <path d="M120 0v420M260 0v420M400 0v420M540 0v420"/>
+          </g>
+          <rect x="42" y="46" width="150" height="96" rx="6" fill="#12161d" stroke="#39414d"/>
+          <rect x="52" y="58" width="130" height="8" rx="4" fill="#e8432f" opacity=".85"/>
+          <rect x="52" y="74" width="96" height="6" rx="3" fill="#5a6472"/>
+          <rect x="52" y="88" width="112" height="6" rx="3" fill="#454d59"/>
+          <rect x="52" y="102" width="76" height="6" rx="3" fill="#454d59"/>
+          <rect x="52" y="120" width="60" height="14" rx="3" fill="url(#hkyHeroRed)"/>
+          <rect x="242" y="46" width="150" height="96" rx="6" fill="#12161d" stroke="#39414d"/>
+          <rect x="252" y="58" width="118" height="8" rx="4" fill="#8a95a5" opacity=".7"/>
+          <rect x="252" y="74" width="130" height="6" rx="3" fill="#454d59"/>
+          <rect x="252" y="88" width="88" height="6" rx="3" fill="#454d59"/>
+          <rect x="252" y="112" width="130" height="16" rx="3" fill="#232a34"/>
+          <rect x="442" y="46" width="156" height="96" rx="6" fill="#12161d" stroke="#39414d"/>
+          <circle cx="486" cy="88" r="20" fill="#e8432f" opacity=".18"/>
+          <circle cx="486" cy="88" r="20" fill="none" stroke="#e8432f"/>
+          <path d="M480 80l14 8-14 8z" fill="#e8432f"/>
+          <rect x="520" y="72" width="62" height="7" rx="3" fill="#5a6472"/>
+          <rect x="520" y="86" width="48" height="7" rx="3" fill="#454d59"/>
+          <rect x="520" y="100" width="56" height="7" rx="3" fill="#454d59"/>
+          <rect x="42" y="170" width="556" height="112" rx="8" fill="#0f131a" stroke="#39414d"/>
+          <path d="M42 226c60-28 104 18 158-8s108 24 170-6 130 20 228-10v80H42z" fill="#1d232c"/>
+          <path d="M42 226c60-28 104 18 158-8s108 24 170-6 130 20 228-10" fill="none" stroke="#e8432f" stroke-width="2.4"/>
+          <g fill="#5a6472">
+            <circle cx="90" cy="250" r="3"/><circle cx="150" cy="238" r="3"/><circle cx="220" cy="248" r="3"/>
+            <circle cx="290" cy="236" r="3"/><circle cx="360" cy="244" r="3"/><circle cx="430" cy="232" r="3"/>
+            <circle cx="500" cy="242" r="3"/><circle cx="560" cy="230" r="3"/>
+          </g>
+          <rect x="42" y="302" width="268" height="80" rx="8" fill="#12161d" stroke="#39414d"/>
+          <rect x="56" y="316" width="80" height="8" rx="4" fill="#e8432f"/>
+          <rect x="56" y="334" width="230" height="6" rx="3" fill="#454d59"/>
+          <rect x="56" y="348" width="190" height="6" rx="3" fill="#454d59"/>
+          <rect x="56" y="366" width="110" height="6" rx="3" fill="#5a6472"/>
+          <circle cx="268" cy="322" r="12" fill="#e8432f" opacity=".2"/>
+          <path d="M264 316l10 6-10 6z" fill="#e8432f"/>
+          <rect x="326" y="302" width="272" height="80" rx="8" fill="#12161d" stroke="#39414d"/>
+          <g fill="#8a95a5">
+            <rect x="342" y="318" width="54" height="48" rx="4" fill="#1c222b" stroke="#39414d"/>
+            <rect x="406" y="318" width="54" height="48" rx="4" fill="#1c222b" stroke="#39414d"/>
+            <rect x="470" y="318" width="54" height="48" rx="4" fill="#1c222b" stroke="#39414d"/>
+            <rect x="534" y="318" width="48" height="48" rx="4" fill="#e8432f" opacity=".35"/>
+          </g>
+        </svg>
+        <span class="hky-hero-badge"><span class="dot"></span>正在观察 · 第 27 期</span>
+        <div class="hky-hero-meta">
+          <div>
+            <b>争议事件时间线还原</b>
+            <span>时长 28:14 · 高清 4K · 多源核验</span>
+          </div>
+          <button class="hky-play" aria-label="播放主视觉视频">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#fff"><path d="M4 2l9 6-9 6z"/></svg>
+          </button>
+        </div>
+      </div>
+      <p class="hky-hero-caption">本平台所有内容均基于公开素材整理并标注来源，鼓励理性讨论，不提供未经核实的人身指控。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 焦点观察 ===== -->
+<section class="hky-sec alt" id="hky-focus">
+  <div class="hky-wrap">
+    <div class="hky-sec-head">
+      <div>
+        <span class="hky-eyebrow">Focus · 焦点观察</span>
+        <h2>今日焦点：网红黑料在线编辑部推荐</h2>
+        <p>由官方内容团队筛选的高信息密度事件纪录，配合多角度解读，帮助你在碎片化传播中建立完整判断。</p>
+      </div>
+      <a class="hky-more" href="#hky-videos">查看全部内容 →</a>
+    </div>
+
+    <div class="hky-focus-grid">
+      <article class="hky-focus-main">
+        <svg viewBox="0 0 720 405" role="img" aria-label="焦点纪录片封面：一段被多次转发的直播录屏逐帧对照画面">
+          <defs>
+            <linearGradient id="hkyFocusBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#20262f"/><stop offset="1" stop-color="#333a46"/>
+            </linearGradient>
+          </defs>
+          <rect width="720" height="405" fill="url(#hkyFocusBg)"/>
+          <g opacity=".14" stroke="#c3ccda" stroke-width="1">
+            <path d="M0 60h720M0 120h720M0 180h720M0 240h720M0 300h720M0 360h720"/>
+          </g>
+          <rect x="40" y="40" width="300" height="196" rx="8" fill="#10141b" stroke="#414b58"/>
+          <rect x="40" y="40" width="300" height="24" rx="8" fill="#e8432f"/>
+          <rect x="54" y="48" width="52" height="8" rx="4" fill="#ffe3dc"/>
+          <rect x="56" y="82" width="268" height="9" rx="4" fill="#4b5563"/>
+          <rect x="56" y="100" width="216" height="9" rx="4" fill="#3d4652"/>
+          <rect x="56" y="118" width="244" height="9" rx="4" fill="#3d4652"/>
+          <rect x="56" y="142" width="120" height="70" rx="5" fill="#1a2029" stroke="#e8432f" stroke-dasharray="5 4"/>
+          <rect x="186" y="142" width="120" height="70" rx="5" fill="#1a2029" stroke="#414b58" stroke-dasharray="5 4"/>
+          <rect x="380" y="40" width="300" height="196" rx="8" fill="#10141b" stroke="#414b58"/>
+          <path d="M400 200l60-58 62 40 66-70 74 92" fill="none" stroke="#e8432f" stroke-width="3"/>
+          <circle cx="462" cy="142" r="5" fill="#e8432f"/>
+          <circle cx="528" cy="182" r="5" fill="#e8432f"/>
+          <circle cx="594" cy="112" r="5" fill="#e8432f"/>
+          <g fill="#4b5563">
+            <rect x="400" y="62" width="120" height="9" rx="4"/>
+            <rect x="400" y="80" width="86" height="8" rx="4"/>
+          </g>
+          <rect x="40" y="262" width="640" height="104" rx="8" fill="#161b23" stroke="#414b58"/>
+          <g>
+            <rect x="58" y="282" width="190" height="10" rx="5" fill="#8d97a5"/>
+            <rect x="58" y="304" width="420" height="8" rx="4" fill="#3d4652"/>
+            <rect x="58" y="322" width="360" height="8" rx="4" fill="#3d4652"/>
+            <rect x="58" y="340" width="220" height="8" rx="4" fill="#3d4652"/>
+          </g>
+          <rect x="552" y="282" width="112" height="64" rx="6" fill="#e8432f"/>
+          <path d="M596 302l20 12-20 12z" fill="#fff"/>
+        </svg>
+        <div class="hky-focus-body">
+          <span class="hky-tag">深度纪录</span><span class="hky-tag">多源核验</span>
+          <h3>一段被剪切的直播录屏：还原争议传播链的 72 小时</h3>
+          <p>团队调取原始直播回放、二次剪辑版本与平台首次传播节点，逐帧比对关键时间点，试图回答一个传播学问题：为什么一个 14 秒的片段可以彻底改变公众印象。视频附带完整时间线与信源清单。</p>
+          <div class="hky-focus-foot">
+            <div class="hky-authorline">
+              <span class="hky-ava" style="background:#e8432f">观</span>
+              观察员 · 老周 <span style="color:#c9c3b6">·</span> 11-22 发布
+            </div>
+            <div class="hky-actions">
+              <button class="hky-act" data-like="focus" aria-label="点赞">♥ <span data-count="focus">1,284</span></button>
+              <button class="hky-act" data-save="focus" aria-label="收藏">☆ 收藏</button>
+              <button class="hky-act" data-copy="焦点内容：一段被剪切的直播录屏" aria-label="复制链接">⧉ 分享</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="hky-focus-list">
+        <article class="hky-flist-item">
+          <span class="hky-flist-num">01</span>
+          <div>
+            <h4>当“塌房”成为流量剧本：三位从业者谈危机公关的灰色边界</h4>
+            <p>邀请品牌公关、MCN 运营与平台审核员，分别复盘近两年三起典型争议事件的处置失当与补救空间。</p>
+            <div class="hky-flist-meta">人物访谈 · <em>21:06</em> · 3.2 万次播放</div>
+          </div>
+        </article>
+        <article class="hky-flist-item">
+          <span class="hky-flist-num">02</span>
+          <div>
+            <h4>截图不等于真相：一次关于“聊天记录”的取证实验</h4>
+            <p>我们邀请影像取证从业者现场演示伪造聊天截图的常见手法，并提供普通用户可自行验证的 4 个步骤。</p>
+            <div class="hky-flist-meta">实用技巧 · <em>14:38</em> · 2.8 万次播放</div>
+          </div>
+        </article>
+        <article class="hky-flist-item">
+          <span class="hky-flist-num">03</span>
+          <div>
+            <h4>被围观的创作者：镜头之外，他们如何重建生活秩序</h4>
+            <p>三位经历过舆论风暴的博主讲述停更、复更与重建信任的过程，是一份关于陪伴与成长的影像记录。</p>
+            <div class="hky-flist-meta">情感故事 · <em>33:42</em> · 4.1 万次播放</div>
+          </div>
+        </article>
+        <article class="hky-flist-item">
+          <span class="hky-flist-num">04</span>
+          <div>
+            <h4>内容生态年度观察：流量、算法与创作者的三方博弈</h4>
+            <p>用数据看趋势，拆解内容生态中口碑、完播与推荐权重的关系，给创作者一份可执行的年度参考。</p>
+            <div class="hky-flist-meta">行业观察 · <em>26:15</em> · 1.9 万次播放</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 视频精选（三列卡） ===== -->
+<section class="hky-sec" id="hky-videos">
+  <div class="hky-wrap">
+    <div class="hky-sec-head">
+      <div>
+        <span class="hky-eyebrow">Videos · 精品内容</span>
+        <h2>网红黑料在线的本周高清精选</h2>
+        <p>保留重点条目的封面，其余以高密度文字索引呈现，方便你快速判断是否值得完整观看。</p>
+      </div>
+      <div class="hky-tags" style="margin-bottom:0">
+        <button class="hky-tagbtn on" data-filter="all">全部</button>
+        <button class="hky-tagbtn" data-filter="深度">深度</button>
+        <button class="hky-tagbtn" data-filter="教程">教程</button>
+        <button class="hky-tagbtn" data-filter="访谈">访谈</button>
+      </div>
+    </div>
+
+    <div class="hky-vgrid" id="hkyVideoGrid">
+      <article class="hky-vcard" data-cat="深度">
+        <div class="hky-vthumb">
+          <svg viewBox="0 0 400 225" role="img" aria-label="视频封面：一部手机屏幕被放大检视，周围环绕信源标签">
+            <rect width="400" height="225" fill="#1c222b"/>
+            <rect x="130" y="30" width="140" height="165" rx="14" fill="#0e1218" stroke="#4b5563"/>
+            <rect x="142" y="46" width="116" height="120" rx="4" fill="#20262f"/>
+            <rect x="152" y="58" width="96" height="8" rx="4" fill="#e8432f"/>
+            <rect x="152" y="74" width="72" height="7" rx="3" fill="#5a6472"/>
+            <rect x="152" y="90" width="86" height="7" rx="3" fill="#5a6472"/>
+            <circle cx="200" cy="140" r="18" fill="none" stroke="#e8432f" stroke-width="2"/>
+            <path d="M192 132l16 16M208 132l-16 16" stroke="#e8432f" stroke-width="2"/>
+            <circle cx="200" cy="178" r="7" fill="none" stroke="#5a6472"/>
+            <g fill="#8d97a5" font-size="10" font-family="sans-serif">
+              <rect x="24" y="60" width="76" height="22" rx="4" fill="#2a313b" stroke="#4b5563"/>
+              <text x="34" y="75">原始录屏</text>
+              <rect x="24" y="120" width="76" height="22" rx="4" fill="#2a313b" stroke="#4b5563"/>
+              <text x="34" y="135">二次剪辑</text>
+              <rect x="300" y="60" width="76" height="22" rx="4" fill="#2a313b" stroke="#4b5563"/>
+              <text x="310" y="75">平台首发</text>
+              <rect x="300" y="120" width="76" height="22" rx="4" fill="#2a313b" stroke="#e8432f"/>
+              <text x="310" y="135">信源清单</text>
+            </g>
+            <path d="M100 71h24M100 131h24M276 71h24M276 131h24" stroke="#4b5563"/>
+          </svg>
+          <span class="hky-dur">28:14</span>
+        </div>
+        <div class="hky-vbody">
+          <div><span class="hky-tag">深度</span><span class="hky-tag">核验</span></div>
+          <h3>逐帧对照：三版直播录屏背后的时间线差异</h3>
+          <p>把三份流传版本放在同一条时间轴上，标注每一处剪切点，并解释为什么细节差异会放大误会。</p>
+          <div class="hky-vmeta"><span class="hky-authorline"><span class="hky-ava" style="background:#e8432f;width:22px;height:22px;font-size:10px">观</span>老周</span><span>12.6 万播放</span></div>
+          <div class="hky-vact">
+            <button class="hky-act" data-like="v1">♥ <span data-count="v1">3,204</span></button>
+            <button class="hky-act" data-save="v1">☆ 收藏</button>
+            <button class="hky-act" data-copy="逐帧对照：三版直播录屏背后的时间线差异">⧉ 分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="hky-vcard" data-cat="教程">
+        <div class="hky-vthumb">
+          <svg viewBox="0 0 400 225" role="img" aria-label="视频封面：四步鉴伪流程图解，步骤方块依次点亮">
+            <rect width="400" height="225" fill="#f0ede4"/>
+            <rect x="0" y="0" width="400" height="225" fill="#e9e5db"/>
+            <g font-family="sans-serif">
+              <rect x="30" y="70" width="72" height="86" rx="8" fill="#fff" stroke="#d8d2c6"/>
+              <circle cx="66" cy="96" r="13" fill="#e8432f"/>
+              <text x="61" y="101" font-size="13" fill="#fff" font-weight="bold">1</text>
+              <rect x="42" y="118" width="48" height="6" rx="3" fill="#c9c3b6"/>
+              <rect x="42" y="130" width="36" height="6" rx="3" fill="#dcd6c9"/>
+              <path d="M108 112h24" stroke="#161a22" stroke-width="2"/>
+              <path d="M126 106l7 6-7 6z" fill="#161a22"/>
+              <rect x="138" y="70" width="72" height="86" rx="8" fill="#fff" stroke="#d8d2c6"/>
+              <circle cx="174" cy="96" r="13" fill="#161a22"/>
+              <text x="169" y="101" font-size="13" fill="#fff" font-weight="bold">2</text>
+              <rect x="150" y="118" width="48" height="6" rx="3" fill="#c9c3b6"/>
+              <rect x="150" y="130" width="30" height="6" rx="3" fill="#dcd6c9"/>
+              <path d="M216 112h24" stroke="#161a22" stroke-width="2"/>
+              <path d="M234 106l7 6-7 6z" fill="#161a22"/>
+              <rect x="246" y="70" width="72" height="86" rx="8" fill="#fff" stroke="#d8d2c6"/>
+              <circle cx="282" cy="96" r="13" fill="#161a22"/>
+              <text x="277" y="101" font-size="13" fill="#fff" font-weight="bold">3</text>
+              <rect x="258" y="118" width="48" height="6" rx="3" fill="#c9c3b6"/>
+              <rect x="258" y="130" width="42" height="6" rx="3" fill="#dcd6c9"/>
+              <path d="M324 112h24" stroke="#161a22" stroke-width="2"/>
+              <path d="M342 106l7 6-7 6z" fill="#161a22"/>
+              <rect x="350" y="70" width="26" height="86" rx="8" fill="#e8432f"/>
+              <text x="357" y="118" font-size="13" fill="#fff" font-weight="bold">4</text>
+              <text x="30" y="48" font-size="15" fill="#161a22" font-weight="bold">截图取证 · 四步自查</text>
+            </g>
+          </svg>
+          <span class="hky-dur">14:38</span>
+        </div>
+        <div class="hky-vbody">
+          <div><span class="hky-tag">教程</span><span class="hky-tag">鉴伪</span></div>
+          <h3>普通用户也能做：识别伪造聊天截图的四个步骤</h3>
+          <p>不依赖专业软件，从字体、行距、时间戳与元信息四个维度，教你在转发前多停留三十秒。</p>
+          <div class="hky-vmeta"><span class="hky-authorline"><span class="hky-ava" style="background:#3a4f17;width:22px;height:22px;font-size:10px">技</span>阿檀</span><span>9.8 万播放</span></div>
+          <div class="hky-vact">
+            <button class="hky-act" data-like="v2">♥ <span data-count="v2">2,517</span></button>
+            <button class="hky-act" data-save="v2">☆ 收藏</button>
+            <button class="hky-act" data-copy="普通用户也能做：识别伪造聊天截图的四个步骤">⧉ 分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="hky-vcard" data-cat="访谈">
+        <div class="hky-vthumb">
+          <svg viewBox="0 0 400 225" role="img" aria-label="视频封面：访谈场景中两个人物的剪影与录音波形">
+            <rect width="400" height="225" fill="#20262f"/>
+            <circle cx="118" cy="92" r="30" fill="#3a4f17"/>
+            <path d="M78 165c0-26 18-44 40-44s40 18 40 44z" fill="#3a4f17"/>
+            <circle cx="282" cy="92" r="30" fill="#e8432f"/>
+            <path d="M242 165c0-26 18-44 40-44s40 18 40 44z" fill="#e8432f"/>
+            <g fill="#eae7df" font-size="11" font-family="sans-serif" opacity=".85">
+              <rect x="52" y="188" width="118" height="16" rx="4" fill="#2b323d"/>
+              <text x="62" y="200">品牌公关 · 沈岸</text>
+              <rect x="230" y="188" width="118" height="16" rx="4" fill="#2b323d"/>
+              <text x="240" y="200">MCN 运营 · 林舟</text>
+            </g>
+            <g stroke="#8d97a5" stroke-width="2" stroke-linecap="round" opacity=".7">
+              <path d="M188 60v20M196 50v40M204 62v16M212 44v56M220 58v24M228 68v8"/>
+            </g>
+          </svg>
+          <span class="hky-dur">21:06</span>
+        </div>
+        <div class="hky-vbody">
+          <div><span class="hky-tag">访谈</span><span class="hky-tag">行业观察</span></div>
+          <h3>当“塌房”成为剧本：三位从业者谈危机公关的灰色边界</h3>
+          <p>从危机响应黄金四小时，到道歉文案的措辞选择，三位一线从业者给出了很不相同的答案。</p>
+          <div class="hky-vmeta"><span class="hky-authorline"><span class="hky-ava" style="background:#2b3a52;width:22px;height:22px;font-size:10px">访</span>林墨</span><span>7.4 万播放</span></div>
+          <div class="hky-vact">
+            <button class="hky-act" data-like="v3">♥ <span data-count="v3">1,932</span></button>
+            <button class="hky-act" data-save="v3">☆ 收藏</button>
+            <button class="hky-act" data-copy="当塌房成为剧本：三位从业者谈危机公关的灰色边界">⧉ 分享</button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- 文字索引列表 -->
+    <div style="margin-top:44px">
+      <h3 style="font-size:17px;margin-bottom:6px">更多文字速览 · 网红黑料在线内容更新</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:14px">下列条目已完成高清转码与来源标注，可直接进入详情页查看信源列表。</p>
+      <div style="border-top:1px solid var(--line)">
+        <article class="hky-flist-item" style="grid-template-columns:minmax(0,1fr) auto;align-items:center">
+          <div style="display:flex;gap:14px;align-items:baseline">
+            <h4 style="margin:0">停更 187 天后，她把评论区改成了“只说事实”</h4>
+            <span class="hky-flist-meta" style="margin:0">日常记录 · 16:22</span>
+          </div>
+          <button class="hky-act" data-like="v4">♥ <span data-count="v4">986</span></button>
+        </article>
+        <article class="hky-flist-item" style="grid-template-columns:minmax(0,1fr) auto;align-items:center">
+          <div style="display:flex;gap:14px;align-items:baseline">
+            <h4 style="margin:0">内容审核员的一天：8 小时看 4,000 条视频是什么体验</h4>
+            <span class="hky-flist-meta" style="margin:0">职场日常 · 23:50</span>
+          </div>
+          <button class="hky-act" data-like="v5">♥ <span data-count="v5">1,408</span></button>
+        </article>
+        <article class="hky-flist-item" style="grid-template-columns:minmax(0,1fr) auto;align-items:center">
+          <div style="display:flex;gap:14px;align-items:baseline">
+            <h4 style="margin:0">从“黑红”到转型：五个账号的三年去向追踪</h4>
+            <span class="hky-flist-meta" style="margin:0">深度测评 · 31:08</span>
+          </div>
+          <button class="hky-act" data-like="v6">♥ <span data-count="v6">2,061</span></button>
+        </article>
+        <article class="hky-flist-item" style="grid-template-columns:minmax(0,1fr) auto;align-items:center;border-bottom:none">
+          <div style="display:flex;gap:14px;align-items:baseline">
+            <h4 style="margin:0">一场线下分享会：当 200 个普通人讨论“如何不被带节奏”</h4>
+            <span class="hky-flist-meta" style="margin:0">在地文化 · 19:44</span>
+          </div>
+          <button class="hky-act" data-like="v7">♥ <span data-count="v7">753</span></button>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 专题企划 ===== -->
+<section class="hky-sec alt" id="hky-special">
+  <div class="hky-wrap">
+    <div class="hky-sec-head">
+      <div>
+        <span class="hky-eyebrow">Specials · 专题企划</span>
+        <h2>网红黑料在线年度专题：把碎片拼成完整图景</h2>
+        <p>每个专题由编辑部统一策划、统一标注更新状态，持续运营，不做一次性发布。</p>
+      </div>
+    </div>
+    <div class="hky-special-grid">
+      <article class="hky-special">
+        <div class="hky-special-head">
+          <h3>专题一 · 传播链还原计划</h3>
+          <span class="hky-status">连载中 · 更新至第 9 期</span>
+        </div>
+        <p>选取近两年高关注度的传播事件，逐条追溯首发、二次编辑与裂变节点，输出可复核的时间线文档。</p>
+        <ul class="hky-special-list">
+          <li><span>14 秒片段如何改变公众印象</span><small>第 9 期 · 28:14</small></li>
+          <li><span>“内部截图”的三种常见伪造路径</span><small>第 8 期 · 22:40</small></li>
+          <li><span>平台首发与二次发酵的时间差</span><small>第 7 期 · 17:05</small></li>
+        </ul>
+      </article>
+      <article class="hky-special">
+        <div class="hky-special-head">
+          <h3>专题二 · 创作者重建手册</h3>
+          <span class="hky-status wait">筹备中 · 12 月上线</span>
+        </div>
+        <p>面向经历舆论波动的创作者，提供停更期心理建设、复更节奏与社区沟通的可执行建议。</p>
+        <ul class="hky-special-list">
+          <li><span>停更不是消失：如何维持社区关系</span><small>待上线</small></li>
+          <li><span>复更第一条视频的三个避坑清单</span><small>待上线</small></li>
+          <li><span>与品牌方重新谈判的沟通话术</span><small>待上线</small></li>
+        </ul>
+      </article>
+      <article class="hky-special">
+        <div class="hky-special-head">
+          <h3>专题三 · 口碑与内容生态白皮书</h3>
+          <span class="hky-status done">已完结 · 共 6 期</span>
+        </div>
+        <p>以公开数据为基础，讨论完播率、互动质量与口碑之间的真实关系，为品牌投放提供参考。</p>
+        <ul class="hky-special-list">
+          <li><span>互动量与口碑背离的四种情形</span><small>第 6 期 · 25:12</small></li>
+          <li><span>高完播内容的共同结构特征</span><small>第 5 期 · 20:38</small></li>
+          <li><span>垂类账号的用户留存曲线差异</span><small>第 4 期 · 18:29</small></li>
+        </ul>
+      </article>
+      <article class="hky-special">
+        <div class="hky-special-head">
+          <h3>专题四 · 一线访谈实录</h3>
+          <span class="hky-status">连载中 · 更新至第 5 期</span>
+        </div>
+        <p>长期跟踪访谈平台审核、品牌公关、法律从业者与独立创作者，呈现多元视角下的行业真实切面。</p>
+        <ul class="hky-special-list">
+          <li><span>审核员的判断标准从哪里来</span><small>第 5 期 · 24:10</small></li>
+          <li><span>律师视角下的名誉权边界</span><small>第 4 期 · 29:33</small></li>
+          <li><span>独立创作者的选题焦虑</span><small>第 3 期 · 21:47</small></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 创作者矩阵 ===== -->
+<section class="hky-sec" id="hky-creators">
+  <div class="hky-wrap">
+    <div class="hky-sec-head">
+      <div>
+        <span class="hky-eyebrow">Creators · 创作者矩阵</span>
+        <h2>持续运营的创作者社区：多元声音，专业表达</h2>
+        <p>平台鼓励真实、克制、有证据意识的表达，以下创作者均已通过实名内容协议与来源标注培训。</p>
+      </div>
+      <a class="hky-more" href="#hky-cta">申请入驻 →</a>
+    </div>
+    <div class="hky-creator-grid">
+      <article class="hky-creator">
+        <div class="hky-cava" style="background:#e8432f">周</div>
+        <div class="hky-cbody">
+          <h3>老周观察 <small>官方认证</small></h3>
+          <div class="hky-cfield">擅长：传播链还原 · 深度纪录</div>
+          <p>前调查记者，现专注网络传播事件的时间线重建。习惯用原始素材说话，视频结尾固定附信源清单，主张“先把事实摆齐，再谈观点”。</p>
+          <div class="hky-cstat"><span>作品 <b>86</b></span><span>粉丝 <b>42.6 万</b></span><button data-author="老周观察">查看资料</button></div>
+        </div>
+      </article>
+      <article class="hky-creator">
+        <div class="hky-cava" style="background:#3a4f17">檀</div>
+        <div class="hky-cbody">
+          <h3>阿檀鉴伪课 <small>专业</small></h3>
+          <div class="hky-cfield">擅长：数字鉴伪 · 实用技巧</div>
+          <p>影像技术从业者，擅长把复杂的取证方法拆成普通人能上手的步骤。更新稳定，每期只讲一个可操作技巧，被用户称为“转发前必看”。</p>
+          <div class="hky-cstat"><span>作品 <b>124</b></span><span>粉丝 <b>31.2 万</b></span><button data-author="阿檀鉴伪课">查看资料</button></div>
+        </div>
+      </article>
+      <article class="hky-creator">
+        <div class="hky-cava" style="background:#2b3a52">墨</div>
+        <div class="hky-cbody">
+          <h3>林墨访谈 <small>深度</small></h3>
+          <div class="hky-cfield">擅长：人物访谈 · 行业观察</div>
+          <p>长期访谈平台运营、品牌公关与法律从业者，提问克制但追问到底。相信对话能消解误解，也愿意把行业里的灰色地带摊开来聊。</p>
+          <div class="hky-cstat"><span>作品 <b>58</b></span><span>粉丝 <b>18.9 万</b></span><button data-author="林墨访谈">查看资料</button></div>
+        </div>
+      </article>
+      <article class="hky-creator">
+        <div class="hky-cava" style="background:#7a4a1f">沐</div>
+        <div class="hky-cbody">
+          <h3>沐子的慢镜头 <small>原创</small></h3>
+          <div class="hky-cfield">擅长：治愈影像 · 生活方式</div>
+          <p>记录创作者在舆论之后的日常。她不谈胜负，只拍清晨的光、手边的咖啡和重新开始的勇气，用温和的画面陪伴每一个疲惫的人。</p>
+          <div class="hky-cstat"><span>作品 <b>97</b></span><span>粉丝 <b>25.4 万</b></span><button data-author="沐子的慢镜头">查看资料</button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 社区口碑 ===== -->
+<section class="hky-sec alt" id="hky-reviews">
+  <div class="hky-wrap">
+    <div class="hky-sec-head">
+      <div>
+        <span class="hky-eyebrow">Reviews · 社区口碑</span>
+        <h2>用户怎么说：网红黑料在线的真实社区反馈</h2>
+        <p>短评与长评混合展示，保留不同长度与不同立场的评价，不做隐藏与筛选。</p>
+      </div>
+    </div>
+    <div class="hky-cmt-grid">
+      <article class="hky-cmt">
+        <div class="hky-cmt-top"><b>@南方的鱼</b><span class="hky-stars">★★★★★</span><small>11-21</small></div>
+        <p>最喜欢它每期都标信源。别的号只放一个 10 秒片段就带节奏，这里会告诉你原视频在哪、什么时候发的，看完心里有底。</p>
+      </article>
+      <article class="hky-cmt">
+        <div class="hky-cmt-top"><b>@阿甘不跑</b><span class="hky-stars">★★★★☆</span><small>11-20</small></div>
+        <p>鉴伪那几期真的实用，我按第四步去查了亲戚群里转的截图，果然是拼接的。少扣一颗星是因为希望更新再快一点。</p>
+      </article>
+      <article class="hky-cmt">
+        <div class="hky-cmt-top"><b>@品牌小周</b><span class="hky-stars">★★★★★</span><small>11-19</small></div>
+        <p>作为品牌方，我们把这里当行业参考库。危机公关那期访谈让团队重新审视了回应时效的问题，比很多付费课程讲得清楚。</p>
+      </article>
+      <article class="hky-cmt">
+        <div class="hky-cmt-top"><b>@旧书摊主</b><span class="hky-stars">★★★★☆</span><small>11-18</small></div>
+        <p>评论区整体比较克制，这点难得。偶尔还是能看到情绪化发言，但管理员处理很快，举报之后基本当天就有回复。</p>
+      </article>
+      <article class="hky-cmt">
+        <div class="hky-cmt-top"><b>@一只慢蜗牛</b><span class="hky-stars">★★★★★</span><small>11-17</small></div>
+        <p>沐子那期看得眼睛发酸。她没讲大道理，就是拍自己煮了一碗面。原来重新开始也可以这么安静。</p>
+      </article>
+      <article class="hky-cmt">
+        <div class="hky-cmt-top"><b>@技术流老陈</b><span class="hky-stars">★★★★☆</span><small>11-15</small></div>
+        <p>希望以后能出一点面向青少年媒介素养的合集，这个方向很有社会价值。内容质量稳定，长期运营看得出来是认真的。</p>
+      </article>
+      <div class="hky-quote">
+        <blockquote>“在黑料满天飞的时候，还有人在坚持做时间线和信源清单，这件事本身就有意义。网红黑料在线不是一个围观的地方，而是一个让人先把事实看清的地方。”</blockquote>
+        <footer>—— 社区用户 @慢读计划 的长评摘录 · 2026 年 11 月</footer>
+      </div>
+      <article class="hky-cmt">
+        <div class="hky-cmt-top"><b>@夜班编辑</b><span class="hky-stars">★★★★★</span><small>11-14</small></div>
+        <p>同行视角说一句：把审核、公关、律师三方放在一期里，很难得。没有强行输出结论，留白反而让观众自己想。</p>
+      </article>
+      <article class="hky-cmt">
+        <div class="hky-cmt-top"><b>@山间小卖部</b><span class="hky-stars">★★★★☆</span><small>11-13</small></div>
+        <p>界面看着舒服，不闹腾。搜“录屏”能直接跳出相关专题，比在信息流里翻半天强多了。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 关键词深度解析 ===== -->
+<section class="hky-sec" id="hky-deep">
+  <div class="hky-wrap">
+    <div class="hky-sec-head" style="margin-bottom:18px">
+      <div>
+        <span class="hky-eyebrow">Insight · 深度解析</span>
+        <h2>读懂“网红黑料在线”：一个内容观察平台为什么值得信赖</h2>
+        <p>以下解析约 900 字，分四个层次说明平台的定位、方法、边界与长期价值。</p>
+      </div>
+    </div>
+    <div class="hky-deep">
+      <div class="hky-insight">
+        <div><b>3 层</b><span>信源分级：原始素材、二次传播、社区讨论，分别标注可信权重</span></div>
+        <div><b>48h</b><span>争议内容复核时效，官方承诺超时反馈并优先处理</span></div>
+        <div><b>100%</b><span>可回溯：每条视频均保留出处按钮，支持观众自行核对</span></div>
+      </div>
+
+      <h3>从“围观”到“理解”：关键词背后的内容定位</h3>
+      <p>“网红黑料在线”这个关键词，天然带着强烈的围观色彩。而在我们的官方网站里，它被重新定义为一种内容观察方法：不提供情绪，只提供脉络；不制造对立，只呈现证据。平台之所以坚持做“还原”而非“爆料”，是因为一次信息误伤的成本往往远高于一次流量收益。作为持续运营的企业级视频平台，我们把每一条内容都当作可以被检索、被引用、被质疑的公共记录来对待——这意味着发布前要完成信源标注，发布后要保持可编辑的更正通道，并在评论区保留不同立场的理性讨论。</p>
+      <p>因此，在这个垂直领域里，网红黑料在线并不是一个简单的聚合站。我们有编辑部的选题会，有对原始素材的逐帧复核，也有面向创作者的内容伦理培训。用户看到的是十几分钟的成片，背后是动辄数十小时的素材整理。我们深知，网络红人的争议事件往往交织着商业合作、平台规则、公众情绪与个人表达，任何单一视角的叙述都可能失真。平台因此确立了一条基本原则：在事实未明前，不给当事人贴标签；在事实明确后，把完整链条讲清楚。这条原则也构成了品牌故事最核心的部分——<strong>用专业、真实与陪伴，对抗信息失序。</strong></p>
+
+      <h3>方法说明：我们如何做一条有据可查的视频</h3>
+      <p>一条合格的纪录视频，通常会经过五个步骤。第一步是<strong>取材</strong>，优先获取原始直播回放、未剪辑素材或当事人本人发布的完整版本，避免直接使用二手搬运内容；第二步是<strong>标注</strong>，为每份素材建立时间戳索引，明确其首次出现的时间与平台；第三步是<strong>交叉核验</strong>，比对不同来源的版本差异，必要时引入影像技术从业者做可验证性判断；第四步是<strong>结构化叙事</strong>，用时间线、对照表与访谈并置的方式呈现信息，让观众可以自己得出判断；第五步是<strong>持续更新</strong>，在评论区或专题内标注后续进展，而不是把旧视频当作结论封存。</p>
+      <p>这套方法并不追求速度，但它让内容具备长期的检索价值。许多用户在半年后仍会回到某个专题下查看澄清，这正是“值得信赖”四个字在内容平台中的具体含义。我们同时保留了一份公开的更新日志，记录每一次更正的原因与时间，让内容生态保持透明可查。</p>
+
+      <h3>边界与责任：不做审判者，只做记录者</h3>
+      <p>内容观察平台最容易越界的地方，是把“讨论”变成“审判”。为此，网红黑料在线在社区规范里明确写下了几条不可逾越的红线：不公布未经核实的个人隐私信息，不对未成年人相关事件做细节渲染，不引导用户到第三方平台进行群体性施压，不把疑似违法事实当作定论传播。遇到涉及法律争议的内容，平台会主动咨询法律从业者，并在视频开头给出说明。这些做法或许会让部分内容显得“不够劲爆”，但我们相信，一个真正具备社会责任感的品牌，衡量标准从来不是单条播放量，而是社区能否在多年后依然被信任。</p>
+      <p>与此同时，平台也鼓励用户参与共建。每一条评论、每一次举报、每一份投稿线索，都会被记录进内容改进流程。我们设置了面向普通用户的媒介素养专栏，也面向青少年群体提供家长可陪同观看的合辑。内容生态的健康不靠某一家平台独力完成，但如果有一个平台愿意把标准写清楚、把流程跑通，它就能成为行业里一个有参照意义的样本。</p>
+
+      <h3>长期价值：陪伴创作者的第二次出发</h3>
+      <p>在所有选题里，我们最看重的不是争议本身，而是争议之后的人如何继续生活。被围观过的创作者往往需要在很长时间里重建信任，而公众的记忆又极其短暂。平台希望提供一个稳定、理性的记录空间：既保存事件，也保存后续。于是有了“创作者重建手册”专题，有了慢镜头式的日常纪录，也有了一线从业者的持续访谈。这些内容共同构成了品牌故事的第二条线索——<strong>在流量之外，仍有人愿意认真对待每一次重新开始。</strong></p>
+      <p>这也是我们坚持把关键词解析放在正文中间位置的原因：它不是营销话术，而是平台对自己工作方式的一次公开说明。作为深耕内容观察的垂直平台，网红黑料在线会继续以高清、原创、正版的方式积累内容资产，用持续运营换取社区口碑，让每一次点击都不只是围观，而是一次更接近真相的理解。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 图文索引 + 企业动态 + 合作 ===== -->
+<section class="hky-sec alt" id="hky-news">
+  <div class="hky-wrap">
+    <div class="hky-sec-head">
+      <div>
+        <span class="hky-eyebrow">Index · 图文索引与企业动态</span>
+        <h2>品牌动态与内容更新：网红黑料在线持续运营中</h2>
+        <p>一组图文索引配合官方发布记录，帮助你快速掌握平台的最新进展。</p>
+      </div>
+    </div>
+
+    <div class="hky-index-grid" style="margin-bottom:48px">
+      <article class="hky-index-card">
+        <div class="hky-vthumb">
+          <svg viewBox="0 0 400 225" role="img" aria-label="图文索引封面：媒介素养公开课的三块课程模块拼贴">
+            <rect width="400" height="225" fill="#e9e5db"/>
+            <rect x="24" y="30" width="108" height="80" rx="6" fill="#fff" stroke="#d8d2c6"/>
+            <rect x="38" y="44" width="60" height="7" rx="3" fill="#e8432f"/>
+            <rect x="38" y="60" width="80" height="6" rx="3" fill="#c9c3b6"/>
+            <rect x="38" y="74" width="66" height="6" rx="3" fill="#dcd6c9"/>
+            <rect x="146" y="30" width="108" height="80" rx="6" fill="#161a22"/>
+            <circle cx="200" cy="66" r="20" fill="none" stroke="#e8432f" stroke-width="2"/>
+            <path d="M194 60l14 6-14 6z" fill="#e8432f"/>
+            <rect x="268" y="30" width="108" height="80" rx="6" fill="#fff" stroke="#d8d2c6"/>
+            <rect x="282" y="44" width="50" height="7" rx="3" fill="#3a4f17"/>
+            <rect x="282" y="60" width="80" height="6" rx="3" fill="#c9c3b6"/>
+            <rect x="282" y="74" width="58" height="6" rx="3" fill="#dcd6c9"/>
+            <rect x="24" y="124" width="352" height="72" rx="6" fill="#fff" stroke="#d8d2c6"/>
+            <rect x="40" y="140" width="150" height="8" rx="4" fill="#161a22"/>
+            <rect x="40" y="158" width="280" height="6" rx="3" fill="#c9c3b6"/>
+            <rect x="40" y="172" width="220" height="6" rx="3" fill="#dcd6c9"/>
+            <rect x="306" y="140" width="54" height="38" rx="4" fill="#e8432f" opacity=".16"/>
+            <rect x="316" y="152" width="34" height="6" rx="3" fill="#e8432f"/>
+            <rect x="316" y="164" width="22" height="6" rx="3" fill="#e8432f" opacity=".6"/>
+          </svg>
+          <span class="hky-dur">专题</span>
+        </div>
+        <div class="hky-index-body">
+          <span class="hky-tag">媒介素养</span>
+          <h3>三节公开课，教你在转发之前多问一句</h3>
+          <p>面向普通用户的入门课程，配合图文步骤与自查清单，适合家庭共同观看。</p>
+          <ul>
+            <li>如何判断一条截图是否被拼接</li>
+            <li>情绪词密度为什么值得警惕</li>
+            <li>给家长的一份陪同观看指南</li>
+          </ul>
+        </div>
+      </article>
+      <article class="hky-index-card">
+        <div class="hky-vthumb">
+          <svg viewBox="0 0 400 225" role="img" aria-label="图文索引封面：数据看板上的口碑与完播指标曲线">
+            <rect width="400" height="225" fill="#20262f"/>
+            <rect x="24" y="26" width="352" height="86" rx="6" fill="#161b23" stroke="#3a4250"/>
+            <path d="M44 92c30-30 56 14 88-8s54 18 82-12 56 20 92-14" fill="none" stroke="#e8432f" stroke-width="2.5"/>
+            <path d="M44 100c30-14 56 6 88-6s54 10 82-8 56 12 92-8" fill="none" stroke="#5a6472" stroke-width="2"/>
+            <g fill="#3a4250"><rect x="44" y="40" width="60" height="6" rx="3"/><rect x="44" y="52" width="38" height="6" rx="3"/></g>
+            <rect x="24" y="128" width="168" height="68" rx="6" fill="#161b23" stroke="#3a4250"/>
+            <circle cx="70" cy="162" r="22" fill="none" stroke="#e8432f" stroke-width="4"/>
+            <path d="M70 140a22 22 0 0119 33" fill="none" stroke="#8d97a5" stroke-width="4"/>
+            <rect x="104" y="148" width="66" height="7" rx="3" fill="#5a6472"/>
+            <rect x="104" y="162" width="48" height="7" rx="3" fill="#3a4250"/>
+            <rect x="208" y="128" width="168" height="68" rx="6" fill="#161b23" stroke="#3a4250"/>
+            <g fill="#e8432f"><rect x="226" y="176" width="14" height="10" rx="2"/><rect x="248" y="164" width="14" height="22" rx="2"/><rect x="270" y="152" width="14" height="34" rx="2"/><rect x="292" y="168" width="14" height="18" rx="2"/><rect x="314" y="146" width="14" height="40" rx="2"/><rect x="336" y="158" width="14" height="28" rx="2"/></g>
+            <rect x="226" y="140" width="60" height="6" rx="3" fill="#5a6472"/>
+          </svg>
+          <span class="hky-dur">数据</span>
+        </div>
+        <div class="hky-index-body">
+          <span class="hky-tag">行业观察</span>
+          <h3>口碑分与播放量真的同向吗？三组对照数据</h3>
+          <p>把互动质量、完播率与用户评价放在一起看，会发现一些被忽略的结构性差异。</p>
+          <ul>
+            <li>高播放低口碑的典型内容结构</li>
+            <li>垂类账号的口碑稳定期规律</li>
+            <li>品牌投放常忽略的三个指标</li>
+          </ul>
+        </div>
+      </article>
+      <article class="hky-index-card">
+        <div class="hky-vthumb">
+          <svg viewBox="0 0 400 225" role="img" aria-label="图文索引封面：一支录音笔与翻开的手写采访笔记">
+            <rect width="400" height="225" fill="#f4f2ec"/>
+            <rect x="40" y="46" width="150" height="140" rx="8" fill="#fff" stroke="#d8d2c6" transform="rotate(-3 115 116)"/>
+            <g transform="rotate(-3 115 116)">
+              <rect x="58" y="66" width="90" height="7" rx="3" fill="#161a22"/>
+              <rect x="58" y="84" width="114" height="5" rx="2.5" fill="#c9c3b6"/>
+              <rect x="58" y="98" width="114" height="5" rx="2.5" fill="#dcd6c9"/>
+              <rect x="58" y="112" width="86" height="5" rx="2.5" fill="#dcd6c9"/>
+              <rect x="58" y="126" width="100" height="5" rx="2.5" fill="#dcd6c9"/>
+              <rect x="58" y="146" width="60" height="14" rx="3" fill="#e8432f" opacity=".2"/>
+            </g>
+            <rect x="238" y="60" width="34" height="110" rx="8" fill="#161a22"/>
+            <rect x="246" y="72" width="18" height="60" rx="4" fill="#3a4f17"/>
+            <circle cx="255" cy="150" r="5" fill="#e8432f"/>
+            <g stroke="#c9c3b6" stroke-width="2" stroke-linecap="round">
+              <path d="M292 96v40M304 84v64M316 100v32M328 90v52M340 106v22"/>
+            </g>
+          </svg>
+          <span class="hky-dur">访谈</span>
+        </div>
+        <div class="hky-index-body">
+          <span class="hky-tag">人物访谈</span>
+          <h3>手写笔记里的十年：一位内容审核员的职业观察</h3>
+          <p>从纸质笔记到数字台账，一位从业者记录了他对内容边界的长期思考。</p>
+          <ul>
+            <li>审核标准如何在实践中演化</li>
+            <li>一线判断中的模糊地带</li>
+            <li>给新人的三条职业建议</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <div class="hky-news-grid">
+      <div>
+        <h3 style="font-size:17px;margin-bottom:14px">企业动态 · 官方发布</h3>
+        <ul class="hky-news-list">
+          <li>
+            <time>2026-11-22</time>
+            <div><h3>《年度争议事件复盘》4K 高清合集上线</h3><p>收录 12 期完整纪录片，新增信源索引时间轴，支持站内检索定位。</p></div>
+          </li>
+          <li>
+            <time>2026-11-20</time>
+            <div><h3>内容生态观察白皮书 2026 版开放下载</h3><p>共计 68 页，含完播结构分析与口碑评估模型，面向创作者与品牌方免费开放。</p></div>
+          </li>
+          <li>
+            <time>2026-11-18</time>
+            <div><h3>创作者申诉通道升级，响应时效缩短</h3><p>新增来源标注辅助模板，争议内容复核平均处理时间缩短至 48 小时以内。</p></div>
+          </li>
+          <li>
+            <time>2026-11-12</time>
+            <div><h3>青少年媒介素养公益课第二季启动报名</h3><p>面向家庭用户的免费公开课，含三节直播与一份可下载自查清单。</p></div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:17px;margin-bottom:14px">合作品牌与伙伴</h3>
+        <div class="hky-partners">
+          <div class="hky-partner"><b>拾光影像</b><span>影像技术支持</span></div>
+          <div class="hky-partner"><b>冷静编辑部</b><span>内容共创伙伴</span></div>
+          <div class="hky-partner"><b>言值法律</b><span>合规顾问</span></div>
+          <div class="hky-partner"><b>慢读计划</b><span>社区共建方</span></div>
+        </div>
+        <p style="font-size:12.5px;color:var(--muted);margin-top:16px">平台欢迎与重视社会责任的机构展开内容共建，共同推动多元、包容、理性的内容生态。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 投稿 CTA ===== -->
+<section class="hky-sec" id="hky-cta">
+  <div class="hky-wrap">
+    <div class="hky-cta">
+      <div>
+        <h2>有线索、有故事、有观点？欢迎投稿给我们</h2>
+        <p>提交时请尽量附上原始素材与来源说明。编辑部会在 5 个工作日内回复，符合规范的线索将进入官方内容策划流程。</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="hky-btn hky-btn-primary" data-open="submit">打开投稿入口 →</button>
+        <button class="hky-btn hky-btn-ghost" style="border-color:#5a6472;color:#eae7df" data-open="report">反馈与举报</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="hky-sec alt" id="hky-faq">
+  <div class="hky-wrap">
+    <div class="hky-sec-head">
+      <div>
+        <span class="hky-eyebrow">Help · 帮助中心</span>
+        <h2>关于网红黑料在线的常见问题</h2>
+        <p>如有其他疑问，可通过页面底部的联系渠道与我们沟通。</p>
+      </div>
+    </div>
+    <div class="hky-faq">
+      <details open>
+        <summary>平台的内容来源是如何保证真实性的？</summary>
+        <div class="hky-faq-a">我们优先采信原始直播回放、当事人公开发布内容与官方声明，并对二手素材做版本比对。每条视频结尾都附有信源清单，观众可以自行核对。对于无法核实的内容，平台会选择不发布或标注为“待核实”，而不是以吸引点击为目的抢先输出。</div>
+      </details>
+      <details>
+        <summary>为什么这里叫“网红黑料在线”，但内容看起来并不激烈？</summary>
+        <div class="hky-faq-a">关键词本身带有围观色彩，但平台把它定义为一种观察方法：提供脉络、保留证据、呈现多方视角。我们不做情绪煽动式爆料，而是以纪录片与访谈的形式还原事件，这是品牌定位的核心，也是长期口碑的基础。</div>
+      </details>
+      <details>
+        <summary>投稿需要提供什么材料？</summary>
+        <div class="hky-faq-a">建议提供原始素材文件或可访问的原始链接、素材首次出现的时间与平台、以及你对事件的简要说明。若能提供相关方回应，会显著提高内容进入策划流程的概率。请勿提交涉及他人隐私且未经核实的信息。</div>
+      </details>
+      <details>
+        <summary>如果发现视频内容有误，如何申请更正？</summary>
+        <div class="hky-faq-a">可通过本页“反馈与举报”入口提交，说明具体时间点与错误类型，并附上可验证的材料。编辑部会在 48 小时内回复，确认后以站内更正说明或专题更新日志的形式公开处理结果。</div>
+      </details>
+      <details>
+        <summary>平台是否提供高清下载？</summary>
+        <div class="hky-faq-a">部分原创内容提供官方高清下载，需在内容详情页确认授权范围。所有下载均遵守正版与授权规范，禁止二次剪辑后用于商业传播。如需品牌合作授权，请联系页面底部的商务渠道。</div>
+      </details>
+      <details>
+        <summary>社区评论有哪些规则？</summary>
+        <div class="hky-faq-a">我们鼓励有依据的讨论，禁止人身攻击、隐私泄露、群体性施压与未经核实的指控。违反规则的评论将被折叠或删除，多次违规的账号会被限制互动权限。我们相信理性的讨论环境是内容生态的一部分。</div>
+      </details>
+      <details>
+        <summary>如何成为平台的签约创作者？</summary>
+        <div class="hky-faq-a">页面创作者矩阵区域的“申请入驻”可查看入口。入驻需要提交过往作品、擅长的内容方向与来源标注说明，通过内容伦理与规范培训后即可开通创作权限。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== 页脚 ===== -->
+<footer class="hky-foot">
+  <div class="hky-wrap">
+    <div class="hky-foot-grid">
+      <div>
+        <div class="hky-foot-logo">
+          <span class="hky-logo-mark">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#222731"/><path d="M20 18h17a12 12 0 010 24H20z" fill="#e8432f"/><circle cx="26" cy="32" r="4" fill="#f4f2ec"/></svg>
+          </span>
+          <strong>网红黑料在线</strong>
+        </div>
+        <p>网红黑料在线官方网站，深耕内容观察垂类的视频平台。以正版素材、高清呈现与多方核验为方法，持续运营面向创作者与用户的真实内容社区。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#hky-focus">焦点观察</a></li>
+          <li><a href="#hky-videos">视频内容</a></li>
+          <li><a href="#hky-special">专题企划</a></li>
+          <li><a href="#hky-creators">创作者矩阵</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于平台</h4>
+        <ul>
+          <li><a href="#hky-deep">品牌故事</a></li>
+          <li><a href="#hky-news">企业动态</a></li>
+          <li><a href="#hky-reviews">社区口碑</a></li>
+          <li><a href="#hky-faq">帮助中心</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>联系与投稿</h4>
+        <ul>
+          <li>内容合作：content@example.com</li>
+          <li>品牌商务：brand@example.com</li>
+          <li>线索投稿：请使用站内投稿入口</li>
+          <li>工作时间：周一至周五 10:00–18:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hky-foot-bottom">
+      <span>© 2026 网红黑料在线 · 官方网站 · 版权所有 · 持续运营中</span>
+      <span>内容基于公开素材整理，仅供参考 · 备案号：京 ICP 备 2026000000 号</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== 回到顶部 ===== -->
+<button class="hky-up" id="hkyUp" aria-label="回到顶部">↑</button>
+
+<!-- ===== Toast ===== -->
+<div class="hky-toast" id="hkyToast"></div>
+
+<!-- ===== 投稿弹窗 ===== -->
+<div class="hky-modal" id="hkyModalSubmit" role="dialog" aria-modal="true" aria-labelledby="hkySubmitTitle">
+  <div class="hky-modal-box">
+    <button class="hky-modal-close" data-close="submit" aria-label="关闭">×</button>
+    <h3 id="hkySubmitTitle">投稿入口</h3>
+    <p style="margin-bottom:16px">请简要描述线索，并留下联系方式。所有投稿信息仅用于内容策划，不会公开展示。</p>
+    <form id="hkySubmitForm">
+      <div class="hky-form-row">
+        <label for="hkySubmitName">昵称</label>
+        <input id="hkySubmitName" name="nickname" placeholder="如何称呼你" required>
+      </div>
+      <div class="hky-form-row">
+        <label for="hkySubmitContact">联系方式</label>
+        <input id="hkySubmitContact" name="contact" placeholder="邮箱或其他可联系的方式" required>
+      </div>
+      <div class="hky-form-row">
+        <label for="hkySubmitText">线索描述</label>
+        <textarea id="hkySubmitText" name="content" rows="4" placeholder="事件梗概、素材来源、是否已有相关方回应……" required></textarea>
+      </div>
+      <button class="hky-btn hky-btn-primary" type="submit" style="width:100%;justify-content:center">提交线索</button>
+    </form>
+  </div>
+</div>
+
+<!-- ===== 反馈弹窗 ===== -->
+<div class="hky-modal" id="hkyModalReport" role="dialog" aria-modal="true" aria-labelledby="hkyReportTitle">
+  <div class="hky-modal-box">
+    <button class="hky-modal-close" data-close="report" aria-label="关闭">×</button>
+    <h3 id="hkyReportTitle">反馈与举报</h3>
+    <p style="margin-bottom:16px">如发现内容存在事实错误、隐私泄露或版权问题，请告知我们，编辑部将在 48 小时内处理。</p>
+    <form id="hkyReportForm">
+      <div class="hky-form-row">
+        <label for="hkyReportType">问题类型</label>
+        <input id="hkyReportType" name="type" placeholder="例如：事实错误 / 版权 / 隐私" required>
+      </div>
+      <div class="hky-form-row">
+        <label for="hkyReportText">详细说明</label>
+        <textarea id="hkyReportText" name="detail" rows="4" placeholder="请说明具体位置与可验证的材料" required></textarea>
+      </div>
+      <button class="hky-btn hky-btn-primary" type="submit" style="width:100%;justify-content:center">提交反馈</button>
+    </form>
+  </div>
+</div>
+
+<!-- ===== 作者资料弹窗 ===== -->
+<div class="hky-modal" id="hkyModalAuthor" role="dialog" aria-modal="true" aria-labelledby="hkyAuthorTitle">
+  <div class="hky-modal-box">
+    <button class="hky-modal-close" data-close="author" aria-label="关闭">×</button>
+    <h3 id="hkyAuthorTitle">创作者资料</h3>
+    <p id="hkyAuthorInfo">正在加载……</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- 工具 ---------- */
+  function $(s,ctx){return (ctx||document).querySelector(s);}
+  function $$(s,ctx){return Array.prototype.slice.call((ctx||document).querySelectorAll(s));}
+
+  var toastEl = $("#hkyToast");
+  var toastTimer = null;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add("on");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove("on"); }, 2200);
+  }
+
+  /* ---------- 移动端导航 ---------- */
+  var burger = $("#hkyBurger"), mnav = $("#hkyMnav");
+  burger.addEventListener("click", function(){
+    var on = mnav.classList.toggle("open");
+    burger.classList.toggle("on", on);
+    burger.setAttribute("aria-expanded", on ? "true" : "false");
+  });
+  $$("a", mnav).forEach(function(a){
+    a.addEventListener("click", function(){
+      mnav.classList.remove("open");
+      burger.classList.remove("on");
+      burger.setAttribute("aria-expanded","false");
+    });
+  });
+
+  /* ---------- 搜索反馈 ---------- */
+  var searchInput = $("#hkySearchInput"), searchFeedback = $("#hkySearchFeedback");
+  var searchData = [
+    "逐帧对照：三版直播录屏背后的时间线差异",
+    "识别伪造聊天截图的四个步骤",
+    "当“塌房”成为剧本：三位从业者谈危机公关",
+    "传播链还原计划 · 专题连载中",
+    "阿檀鉴伪课 · 创作者资料",
+    "内容生态观察白皮书 2026 版"
+  ];
+  var searchTimer = null;
+  searchInput.addEventListener("input", function(){
+    var q = searchInput.value.trim();
+    clearTimeout(searchTimer);
+    if(!q){
+      searchFeedback.classList.remove("on");
+      return;
+    }
+    searchTimer = setTimeout(function(){
+      var hits = searchData.filter(function(t){ return t.indexOf(q) > -1; });
+      if(hits.length){
+        searchFeedback.textContent = "匹配到 " + hits.length + " 条结果：" + hits.slice(0,2).join("；");
+      }else{
+        searchFeedback.textContent = "暂无完全匹配结果，可尝试“录屏”“鉴伪”“访谈”等关键词";
+      }
+      searchFeedback.classList.add("on");
+    }, 280);
+  });
+  document.addEventListener("click", function(e){
+    if(!e.target.closest(".hky-search")) searchFeedback.classList.remove("on");
+  });
+
+  /* ---------- 点赞 ---------- */
+  $$("[data-like]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var key = btn.getAttribute("data-like");
+      var countEl = document.querySelector('[data-count="' + key + '"]');
+      var liked = btn.classList.toggle("liked");
+      if(countEl){
+        var n = parseInt(countEl.textContent.replace(/,/g,""),10) || 0;
+        n = liked ? n + 1 : n - 1;
+        countEl.textContent = n.toLocaleString("en-US");
+      }
+      toast(liked ? "已点赞，感谢支持" : "已取消点赞");
+    });
+  });
+
+  /* ---------- 收藏 ---------- */
+  $$("[data-save]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var on = btn.classList.toggle("saved");
+      btn.textContent = on ? "★ 已收藏" : "☆ 收藏";
+      toast(on ? "已加入收藏夹" : "已取消收藏");
+    });
+  });
+
+  /* ---------- 复制链接 ---------- */
+  $$("[data-copy]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var text = btn.getAttribute("data-copy");
+      function fallback(){
+        try{
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          toast("内容标题已复制，可粘贴分享");
+        }catch(e){
+          toast("复制失败，请手动选择标题");
+        }
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){
+          toast("内容标题已复制，可粘贴分享");
+        }).catch(fallback);
+      }else{
+        fallback();
+      }
+    });
+  });
+
+  /* ---------- 标签筛选 ---------- */
+  var filterBtns = $$("[data-filter]");
+  var videoCards = $$("#hkyVideoGrid .hky-vcard");
+  filterBtns.forEach(function(b){
+    b.addEventListener("click", function(){
+      filterBtns.forEach(function(x){ x.classList.remove("on"); });
+      b.classList.add("on");
+      var f = b.getAttribute("data-filter");
+      videoCards.forEach(function(card){
+        var cat = card.getAttribute("data-cat");
+        card.style.display = (f === "all" || f === cat) ? "" : "none";
+      });
+    });
+  });
+
+  /* ---------- 作者弹窗 ---------- */
+  var authorData = {
+    "老周观察":"前调查记者，现专注网络传播事件的时间线重建。视频结尾固定附信源清单，主张先把事实摆齐再谈观点。入驻平台 3 年，累计发布 86 部纪录作品，粉丝 42.6 万，多次参与平台内容伦理培训课程设计。",
+    "阿檀鉴伪课":"影像技术从业者，擅长把复杂的取证方法拆成普通人能上手的步骤。每期只讲一个可操作技巧，被称为“转发前必看”。累计作品 124 部，粉丝 31.2 万，长期为社区提供媒介素养公开课内容。",
+    "林墨访谈":"长期访谈平台运营、品牌公关与法律从业者，提问克制但追问到底。相信对话能消解误解，也愿意把行业灰色地带摊开来聊。累计作品 58 部，粉丝 18.9 万，访谈实录专题持续连载中。",
+    "沐子的慢镜头":"记录创作者在舆论之后的日常，不谈胜负，只拍清晨的光、手边的咖啡和重新开始的勇气。作品 97 部，粉丝 25.4 万，以治愈影像陪伴社区用户，是平台“创作者重建手册”专题的核心作者。"
+  };
+  var modalAuthor = $("#hkyModalAuthor"), authorInfo = $("#hkyAuthorInfo");
+  $$("[data-author]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var name = btn.getAttribute("data-author");
+      $("#hkyAuthorTitle").textContent = name + " · 创作者资料";
+      authorInfo.textContent = authorData[name] || "该创作者的详细资料正在整理中。";
+      modalAuthor.classList.add("on");
+    });
+  });
+
+  /* ---------- 弹窗开关 ---------- */
+  var modals = {
+    submit: $("#hkyModalSubmit"),
+    report: $("#hkyModalReport"),
+    author: modalAuthor
+  };
+  function openModal(key){
+    if(modals[key]) modals[key].classList.add("on");
+  }
+  function closeModal(key){
+    if(modals[key]) modals[key].classList.remove("on");
+  }
+  $$("[data-open]").forEach(function(b){
+    b.addEventListener("click", function(){ openModal(b.getAttribute("data-open")); });
+  });
+  $$("[data-close]").forEach(function(b){
+    b.addEventListener("click", function(){ closeModal(b.getAttribute("data-close")); });
+  });
+  $$(".hky-modal").forEach(function(m){
+    m.addEventListener("click", function(e){
+      if(e.target === m) m.classList.remove("on");
+    });
+  });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){
+      $$(".hky-modal.on").forEach(function(m){ m.classList.remove("on"); });
+    }
+  });
+
+  /* ---------- 表单提交 ---------- */
+  $("#hkySubmitForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    closeModal("submit");
+    toast("线索已提交，编辑部将在 5 个工作日内回复");
+    this.reset();
+  });
+  $("#hkyReportForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    closeModal("report");
+    toast("反馈已收到，我们将在 48 小时内处理");
+    this.reset();
+  });
+
+  /* ---------- 回到顶部 ---------- */
+  var up = $("#hkyUp");
+  window.addEventListener("scroll", function(){
+    up.classList.toggle("on", window.scrollY > 420);
+  }, {passive:true});
+  up.addEventListener("click", function(){
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+
+  /* ---------- 锚点偏移补偿（吸顶高度） ---------- */
+  function offsetAnchor(){
+    if(location.hash){
+      var target = document.querySelector(location.hash);
+      if(target){
+        var stickyH = $(".hky-sticky").offsetHeight;
+        window.scrollTo({
+          top: target.getBoundingClientRect().top + window.scrollY - stickyH - 12,
+          behavior: "smooth"
+        });
+      }
+    }
+  }
+  $$('a[href^="#"]').forEach(function(a){
+    a.addEventListener("click", function(e){
+      var href = a.getAttribute("href");
+      if(href.length > 1){
+        var target = document.querySelector(href);
+        if(target){
+          e.preventDefault();
+          var stickyH = $(".hky-sticky").offsetHeight;
+          window.scrollTo({
+            top: target.getBoundingClientRect().top + window.scrollY - stickyH - 12,
+            behavior: "smooth"
+          });
+          history.replaceState(null, "", href);
+        }
+      }
+    });
+  });
+  window.addEventListener("hashchange", offsetAnchor);
+})();
+</script>
+</body>
+                </html>
